@@ -24,7 +24,7 @@ public class Constants {
     /** Asset Constants **/
     // Location of description file for texture atlas
     public static final String TEXTURE_ATLAS_OBJECTS =
-            "android/assets/images/worldtextures.atlas";
+            "android/assets/images/objecttextures.atlas";
 
     /** Level Tile Constants **/
     // Width and Height of level tiles
@@ -39,7 +39,7 @@ public class Constants {
     // Base starting player health pool
     public static final int BASE_PLAYER_HEALTH = 50;
 
-    /** AbstractLivingObject Constants **/
+    /** AbstractMovingObject Constants **/
     // Types of enemy weapons in the game
     public enum WeaponType { LASER, GAS, POISON, NEEDLE, VIAL }
 

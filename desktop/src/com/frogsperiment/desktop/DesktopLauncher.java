@@ -20,8 +20,8 @@ public class DesktopLauncher {
             settings.maxHeight = 1024;
             settings.duplicatePadding = true;
             settings.debug = drawDebugOutline;
-            TexturePacker.process(settings, "android/assets-raw/images",
-                    "android/assets/images", "worldtextures");
+            TexturePacker.process(settings, "android/assets/raw-images",
+                    "android/assets/images", "objecttextures");
         }
 
 		LwjglApplicationConfiguration config =

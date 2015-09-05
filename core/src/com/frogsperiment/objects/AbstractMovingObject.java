@@ -5,14 +5,14 @@ import com.badlogic.gdx.math.Vector2;
 /**
  * Created by bedford on 9/2/15.
  */
-public abstract class AbstractLivingObject extends AbstractGameObject {
+public abstract class AbstractMovingObject extends AbstractGameObject {
 
     protected Vector2 moveSpeed;
     protected float moveRate;
     protected boolean isMoving;
     protected int maxJumps, currentJumps;
 
-    public AbstractLivingObject() {
+    public AbstractMovingObject() {
         moveRate = 5;
         moveSpeed = new Vector2(0,0);
         isMoving = false;
