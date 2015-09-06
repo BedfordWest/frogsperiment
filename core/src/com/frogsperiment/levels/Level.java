@@ -6,7 +6,10 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import com.frogsperiment.assets.Assets;
+import com.frogsperiment.objects.Bot;
+import com.frogsperiment.objects.Creep;
 import com.frogsperiment.objects.Player;
+import com.frogsperiment.objects.Terrain;
 import com.frogsperiment.util.Constants;
 
 import java.util.ArrayList;
@@ -19,11 +22,17 @@ import java.util.Random;
 public class Level {
 
     public static final String TAG = Level.class.getName();
-    private List<Enemy> enemies = new ArrayList<Enemy>();
+    // Store all the bots in the level in a list
+    private List<Bot> bots = new ArrayList<Bot>();
+    // Need to store the roaming creatures, also
+    private List<Creep> creeps = new ArrayList<Creep>();
+    // All of the terrain features need to be in a list, as well
+    private List<Terrain> terrain = new ArrayList<Terrain>();
+
     private MapGenerator mapGen = new MapGenerator();
     private TiledMap map;
     private Player player;
-    private List<LevelTile> levelTiles = new ArrayList<LevelTile>();
+
 
     private float enemyChance = 0.03f;
 

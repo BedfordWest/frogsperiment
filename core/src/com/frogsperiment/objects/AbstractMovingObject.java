@@ -11,6 +11,8 @@ public abstract class AbstractMovingObject extends AbstractGameObject {
     protected float moveRate;
     protected boolean isMoving;
     protected int maxJumps, currentJumps;
+    protected float stateTime;
+
 
     public AbstractMovingObject() {
         moveRate = 5;
@@ -38,6 +40,7 @@ public abstract class AbstractMovingObject extends AbstractGameObject {
         return moveRate;
     }
     public boolean isMoving() { return isMoving; }
+    public float getStateTime(){ return stateTime; }
 
     // Setters
     public void setMoveSpeed (Vector2 speed) { moveSpeed = speed; }

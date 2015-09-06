@@ -1,11 +1,16 @@
 package com.frogsperiment.world;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
 import com.frogsperiment.levels.Level;
+import com.frogsperiment.objects.AbstractGameObject;
+import com.frogsperiment.objects.AbstractMovingObject;
 import com.frogsperiment.objects.Player;
 import com.frogsperiment.objects.Weapon;
 import com.frogsperiment.util.CameraHelper;
+import com.frogsperiment.util.Constants;
 import com.frogsperiment.util.InputController;
 
 /**
@@ -23,6 +28,9 @@ public class WorldController {
     private boolean initRenderState = false;
     private Stage uiStage, gameStage;
     private InputController inputController;
+    private float accumulator = 0f;
+    private Array<AbstractMovingObject> objects =
+            new Array<AbstractMovingObject>();
 
     // Rectangles for collision detection
     private Rectangle r1 = new Rectangle();
@@ -49,6 +57,7 @@ public class WorldController {
     public void update (float deltaTime) {
         inputController.handleDebugInput(deltaTime);
         //Put collision handling here
+        updateMove(deltaTime);
         cameraHelper.update(deltaTime);
     }
 
@@ -61,6 +70,30 @@ public class WorldController {
     private void onCollisionPlayerWithWeapon(Weapon weapon) {};
 
     private void testCollisions() {
+    }
+
+    // For any objects derived from AbstractMovingObject, make sure they move
+    private void updateMove(float deltaTime) {
+        // fixed time step
+        // max frame time to avoid spiral of death (on slow devices)
+        double frameTime = Math.min(deltaTime, 0.25f);
+        accumulator += frameTime;
+
+        // Perform full movement for each TIME_STEP
+        while (accumulator >= Constants.TIME_STEP) {
+
+            accumulator -= Constants.TIME_STEP;
+            for (AbstractMovingObject o : objects) {
+                if (o != null) { o.update(Constants.TIME_STEP); }
+            }
+
+        }
+
+        // Interpolate for anything "left over" after the time steps
+        for (AbstractMovingObject o : objects) {
+            if (o != null) { o.interpolate(accumulator/ Constants.TIME_STEP); }
+        }
+
     }
 
 

@@ -20,6 +20,8 @@ public class Constants {
     public static final float VIEWPORT_GUI_HEIGHT = 480.0f;
     // This corresponds to how many pixels are in a meter
     public static final float WORLD_SCALE = 16.0f;
+    // Length of time in a frame step
+    public static final float TIME_STEP = 1/120f;
 
     /** Asset Constants **/
     // Location of description file for texture atlas

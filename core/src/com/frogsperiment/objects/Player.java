@@ -25,7 +25,6 @@ public class Player extends AbstractMovingObject {
     private static final int FRAME_COLS = 6;
     private static final int FRAME_ROWS = 5;
     Animation walkAnimation;
-    float stateTime;
 
     public Player() {
         init();
@@ -51,7 +50,7 @@ public class Player extends AbstractMovingObject {
             }
         }
         this.walkAnimation = new Animation(0.025f, walkFrames);
-        stateTime = 0f;
+        this.stateTime = 0f;
 
 
     }
@@ -62,7 +61,7 @@ public class Player extends AbstractMovingObject {
 
         if (this.direction == Constants.DIRECTION_RIGHT)
         {
-            stateTime += Gdx.graphics.getDeltaTime();
+            this.stateTime += Gdx.graphics.getDeltaTime();
             currentFrame = walkAnimation.getKeyFrame(stateTime,true);
             batch.draw(currentFrame, position.x, position.y,
                     origin.x, origin.y, dimension.x, dimension.y, scale.x,
@@ -72,7 +71,7 @@ public class Player extends AbstractMovingObject {
         else if (this.direction == Constants.DIRECTION_LEFT)
         {
 
-            stateTime += Gdx.graphics.getDeltaTime();
+            this.stateTime += Gdx.graphics.getDeltaTime();
             currentFrame = walkAnimation.getKeyFrame(stateTime,true);
             batch.draw(currentFrame, position.x, position.y,
                     origin.x, origin.y, dimension.x, dimension.y, scale.x,

@@ -47,8 +47,7 @@ public class InputController extends InputAdapter {
             player.setMoveSpeed(new Vector2(player.getSpeed().x -
                     player.getMoveRate(), player.getSpeed().y));
             Gdx.app.debug(TAG, "D released, move speed: " +
-                    player.getSpeed().x + " velocity: " +
-                    player.getBody().getLinearVelocity().x);
+                    player.getSpeed().x);
             if (Gdx.input.isKeyPressed(Input.Keys.A)) {
                 player.setDirection(Constants.DIRECTION_LEFT);
             }
@@ -57,8 +56,7 @@ public class InputController extends InputAdapter {
             player.setMoveSpeed(new Vector2(player.getSpeed().x +
                     player.getMoveRate(), player.getSpeed().y));
             Gdx.app.debug(TAG, "A released, move speed: " +
-                    player.getSpeed().x + " velocity: " +
-                    player.getBody().getLinearVelocity().x);
+                    player.getSpeed().x);
             if (Gdx.input.isKeyPressed(Input.Keys.D)) {
                 player.setDirection(Constants.DIRECTION_RIGHT);
             }
@@ -79,16 +77,14 @@ public class InputController extends InputAdapter {
                         player.getMoveRate(), player.getSpeed().y));
                 player.setDirection(Constants.DIRECTION_LEFT);
                 Gdx.app.debug(TAG, "A pressed, move speed: " +
-                        player.getSpeed().x + " velocity: " +
-                        player.getBody().getLinearVelocity().x);
+                        player.getSpeed().x);
                 break;
             case Input.Keys.D:
                 player.setMoveSpeed(new Vector2(player.getSpeed().x +
                         player.getMoveRate(), player.getSpeed().y));
                 player.setDirection(Constants.DIRECTION_RIGHT);
                 Gdx.app.debug(TAG, "D pressed, move speed " +
-                        player.getSpeed().x + " velocity: " +
-                        player.getBody().getLinearVelocity().x);
+                        player.getSpeed().x);
                 break;
             default:
         }
